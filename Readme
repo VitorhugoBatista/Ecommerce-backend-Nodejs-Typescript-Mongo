@@ -36,7 +36,7 @@ O fluxo típico de uma requisição é:
 Route -> Controller -> Service -> Controller -> Response
 
 -Rotas
-GET /?currency=: Retorna o preço atual do Bitcoin na moeda informada. Valores possíveis para currency: USD, EUR, GBP.
+GET /getbitcoinprice/?currency=(currency): Retorna o preço atual do Bitcoin na moeda informada. Valores possíveis para currency: USD, EUR, GBP.
 
 Exemplo:
 GET /getbitcoinprice/?currency=USD

@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "target": "es2016",
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "allowJs": true,
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": ["./src/**/*.ts"]
+}

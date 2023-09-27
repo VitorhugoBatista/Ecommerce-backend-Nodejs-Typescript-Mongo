@@ -27,7 +27,7 @@ Exemplos:
 404 para endpoint não encontrado
 400 para parâmetros inválidos
 500 para erros inesperados
-Isso padroniza o retorno de erros e facilita o consumo pelo cliente.
+
 
 Fluxo
 O fluxo típico de uma requisição é:

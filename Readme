@@ -7,6 +7,7 @@ Node.js
 Express
 TypeScript
 Jest (testes unitários)
+Prettier para identar o código
 
 Estrutura
 O projeto segue uma arquitetura baseada em camadas:
@@ -38,7 +39,7 @@ Route -> Controller -> Service -> Controller -> Response
 GET /?currency=: Retorna o preço atual do Bitcoin na moeda informada. Valores possíveis para currency: USD, EUR, GBP.
 
 Exemplo:
-GET /?currency=USD
+GET /getbitcoinprice/?currency=USD
 Retorno:
 json
 

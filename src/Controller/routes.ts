@@ -8,7 +8,7 @@ const router = Router();
  * @swagger
  * /:
  *  get:
- *    description: Endpoint para obter o preço do Bitcoin em uma moeda específica(USD,GBP,EUR), exemplo de busca:http://localhost:3000/?currency=USD
+ *    description: Endpoint para obter o preço do Bitcoin em uma moeda específica(USD,GBP,EUR), exemplo de busca:http://localhost:3000/getbitcoinprice/?currency=USD
  *    parameters:
  *      - name: currency
  *        in: query
@@ -24,7 +24,7 @@ const router = Router();
  *        description: O parâmetro 'currency' é obrigatório
  */
 
-router.get('/', async (req: Request, res: Response) => {
+router.get('/getbitcoinprice', async (req: Request, res: Response) => {
   const currency = req.query.currency as string;
   if (!currency) {
     return res

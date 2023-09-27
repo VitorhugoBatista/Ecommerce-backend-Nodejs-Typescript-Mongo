@@ -3,6 +3,12 @@ import router from './Controller/routes';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import { swaggerOptions } from './swagger/swaggerDocs';
+import rateLimit from "express-rate-limit";
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 100, // limite cada IP para 100 requisições por janela
+});
 
 export class App {
   public app: Express;
@@ -19,6 +25,7 @@ export class App {
   private initializeMiddlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(limiter);
   }
 
   private initializeRoutes() {

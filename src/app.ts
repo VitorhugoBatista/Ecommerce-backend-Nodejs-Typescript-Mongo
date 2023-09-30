@@ -5,6 +5,13 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import { swaggerOptions } from './swagger/swaggerDocs';
 import rateLimit from "express-rate-limit";
 
+
+
+
+
+
+
+
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
   max: 100, // limite cada IP para 100 requisições por janela
@@ -13,6 +20,7 @@ const limiter = rateLimit({
 export class App {
   public app: Express;
   public port: number;
+
 
   constructor(port: number) {
     this.app = express();
@@ -41,7 +49,7 @@ export class App {
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`Server running on port ${this.port}`);
+      console.log(` Express Server running on port ${this.port}`);
     });
   }
 }

@@ -1,41 +1,51 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
-import { getBitcoinPrice } from '../Service/bitcoinPriceService';
+import { listProducts } from '../Service/listProducts';
+
 
 const router = Router();
 
 /**
  * @swagger
- * /:
+ * /api/products:
  *  get:
- *    description: Endpoint para obter o preço do Bitcoin em uma moeda específica(USD,GBP,EUR), exemplo de busca:http://localhost:3000/getbitcoinprice/?currency=USD
- *    parameters:
- *      - name: currency
- *        in: query
- *        required: true
- *        schema:
- *          type: string
+ *    summary: Rota de teste para listar produtos
+ *    description: Esta é uma rota de teste usada para obter uma lista de todos os produtos disponíveis.
  *    responses:
  *      '200':
- *        description: Uma resposta bem sucedida
+ *        description: Lista de produtos retornada com sucesso.
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: object
+ *                properties:
+ *                  _id:
+ *                    type: string
+ *                  name:
+ *                    type: string
+ *                  description:
+ *                    type: string
+ *                  id_transaction:
+ *                    type: integer
+ *                  __v:
+ *                    type: integer
  *      '500':
- *        description: Currency inválido
- *      '400':
- *        description: O parâmetro 'currency' é obrigatório
+ *        description: Erro interno do servidor.
  */
 
-router.get('/getbitcoinprice', async (req: Request, res: Response) => {
-  const currency = req.query.currency as string;
-  if (!currency) {
-    return res
-      .status(400)
-      .json({ message: "O parâmetro 'currency' é obrigatório." });
-  }
-  try {
-    const price = await getBitcoinPrice(currency);
-    res.status(200).json({ currency, price });
-  } catch (error) {
-    res.status(500).json({ message: 'Currency inválido', details: error });
-  }
-});
+router.get('/api/products', async (req: Request, res: Response) => {
+    try {
+      let list = await listProducts();
+      if (list) {
+        res.json(list);
+      } else {
+        res.status(500).send('Não foi possível obter a lista de produtos');
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('Erro interno do servidor');
+    }
+  });
 export default router;

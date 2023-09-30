@@ -4,9 +4,9 @@ export const swaggerOptions = {
     info: {
       title: 'API Bitcoin',
       version: '1.0.0',
-      description: 'API para consultar o preço do Bitcoin',
+      description: 'Api documentation',
     },
-    servers: [{ url: 'http://localhost:3000/getbitcoinprice' }],
+    servers: [{ url: 'http://localhost:3000/' }],
   },
   apis: ['./Controller/routes.ts', './dist/Controller/routes.js'],
 };
